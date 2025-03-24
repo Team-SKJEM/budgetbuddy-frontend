@@ -5,7 +5,10 @@ on:
     branches:
       - main
 
-permissions: write-all
+permissions:
+  actions: write
+  contents: write
+  pages: write
 
 jobs:
   build:
