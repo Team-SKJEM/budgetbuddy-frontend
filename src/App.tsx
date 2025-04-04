@@ -9,7 +9,7 @@ import Register from "./pages/Register";
 function App() {
   return (
     <Provider>
-      <Router>
+      <Router basename="/budgetbuddy-frontend">
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
