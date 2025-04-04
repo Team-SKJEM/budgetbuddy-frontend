@@ -7,6 +7,6 @@ describe("tests for the homepage", () => {
   });
 
   it("should render content on the homepage", () => {
-    expect(screen.getByText("Home")).toBeInTheDocument();
+    expect(screen.getByText("HomePage")).toBeInTheDocument();
   });
 });
