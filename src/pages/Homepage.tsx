@@ -1,5 +1,7 @@
-function Homepage() {
-  return <div>Home</div>;
-}
+import React from "react";
 
-export default Homepage;
+const HomePage: React.FC = () => {
+  return <h1>HomePage</h1>;
+};
+
+export default HomePage;

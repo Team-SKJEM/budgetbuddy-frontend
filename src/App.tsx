@@ -1,18 +1,23 @@
-import React from "react";
 import { Provider } from "./components/ui/provider";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components";
-import { Box } from "@chakra-ui/react";
+import HomePage from "./pages/Homepage";
+import About from "./pages/About";
+import Mission from "./pages/Mission";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <Provider>
-      <Box
-        bgGradient="linear(to-b, #87C2F3, #D3E6F6)"
-        minHeight="100vh"
-        pt="60px"
-      >
+      <Router>
         <Navbar />
-      </Box>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/mission" element={<Mission />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </Router>
     </Provider>
   );
 }
