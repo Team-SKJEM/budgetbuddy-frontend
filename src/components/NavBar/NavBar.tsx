@@ -8,7 +8,7 @@ export const Navbar: React.FC = () => {
   return (
     <Box
       w="100%"
-      p="4"
+      p={{ base: 1.5, sm: 2, md: 4 }}
       color="white"
       position="fixed"
       top="0"
@@ -16,83 +16,57 @@ export const Navbar: React.FC = () => {
       zIndex="1"
       borderBottom="2px solid white"
     >
-      <Flex align="center" w="100%" justifyContent="space-between">
+      <Flex
+        align="center"
+        w="100%"
+        justifyContent="space-between"
+        flexWrap="wrap"
+      >
         <RouterLink to="/">
           <Image
             src={logo}
             alt="Logo"
-            maxHeight="60px" // Adjust the maxHeight as needed
-            objectFit="contain" // Ensures the image scales without distortion
+            maxHeight={{ base: "30px", sm: "40px", md: "55px", lg: "65px" }}
+            objectFit="contain"
           />
         </RouterLink>
 
-        <Flex gap={4}>
-          <ChakraLink asChild>
-            <Button
-              variant="solid"
-              bg="white"
-              color="#89C3F3"
-              _hover={{ textDecoration: "none" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _active={{ boxShadow: "none" }}
-            >
-              <RouterLink to="/" style={{ color: "#89C3F3" }}>
-                Home
-              </RouterLink>
-            </Button>
-          </ChakraLink>
-          <ChakraLink asChild>
-            <Button
-              variant="solid"
-              bg="white"
-              color="#89C3F3"
-              _hover={{ textDecoration: "none" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _active={{ boxShadow: "none" }}
-            >
-              <RouterLink to="/about" style={{ color: "#89C3F3" }}>
-                About
-              </RouterLink>
-            </Button>
-          </ChakraLink>
-          <ChakraLink asChild>
-            <Button
-              variant="solid"
-              bg="white"
-              color="#89C3F3"
-              _hover={{ textDecoration: "none" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _active={{ boxShadow: "none" }}
-            >
-              <RouterLink to="/mission" style={{ color: "#89C3F3" }}>
-                Our Mission
-              </RouterLink>
-            </Button>
-          </ChakraLink>
-          <Button
-            variant="solid"
-            bg="white"
-            color="#89C3F3"
-            _hover={{ textDecoration: "none" }}
-            _focus={{ boxShadow: "none", outline: "none" }}
-            _active={{ boxShadow: "none" }}
-          >
-            Sign In
-          </Button>
-          <ChakraLink asChild>
-            <Button
-              variant="solid"
-              bg="white"
-              color="#89C3F3"
-              _hover={{ textDecoration: "none" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _active={{ boxShadow: "none" }}
-            >
-              <RouterLink to="/register" style={{ color: "#89C3F3" }}>
-                Register
-              </RouterLink>
-            </Button>
-          </ChakraLink>
+        <Flex
+          gap={{ base: 1, sm: 2, md: 4 }}
+          flexWrap="wrap"
+          justify="flex-end"
+        >
+          {[
+            { label: "Home", to: "/" },
+            { label: "About", to: "/about" },
+            { label: "Our Mission", to: "/mission" },
+            { label: "Sign In" },
+            { label: "Register", to: "/register" },
+          ].map((item, i) => (
+            <ChakraLink asChild key={i}>
+              <Button
+                fontSize={{ base: "2xs", sm: "xs", md: "sm", lg: "md" }}
+                px={{ base: 2, sm: 3, md: 4, lg: 5 }}
+                py={{ base: 1, sm: 2, md: 2.5 }}
+                height="auto"
+                minW="auto"
+                variant="solid"
+                bg="white"
+                color="#89C3F3"
+                _hover={{ textDecoration: "none" }}
+                _focus={{ boxShadow: "none", outline: "none" }}
+                _active={{ boxShadow: "none" }}
+              >
+                {item.to ? (
+                  <RouterLink to={item.to} style={{ color: "#89C3F3" }}>
+                    {item.label}
+                  </RouterLink>
+                ) : (
+                  item.label
+                )}
+              </Button>
+            </ChakraLink>
+          ))}
         </Flex>
       </Flex>
     </Box>
