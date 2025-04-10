@@ -9,10 +9,10 @@ export const Navbar: React.FC = () => {
     <Box
       w="100%"
       p={{ base: 1.5, sm: 2, md: 4 }}
-      color="#D3E6F6"
+      color="#F0F5FA"
       position="fixed"
       top="0"
-      bg="#D3E6F6"
+      bg="#F0F5FA"
       zIndex="1"
     >
       <Flex
@@ -42,7 +42,12 @@ export const Navbar: React.FC = () => {
             { label: "Our Mission", to: "/mission" },
             { label: "Sign In" },
           ].map((item, i) => (
-            <ChakraLink asChild key={i}>
+            <ChakraLink
+              asChild
+              key={i}
+              _focus={{ outline: "none" }} // Remove focus outline
+              _active={{ outline: "none" }} // Remove active outline
+            >
               <RouterLink to={item.to || "#"}>
                 <Text
                   fontSize={{ base: "xs", sm: "sm", md: "md" }}
