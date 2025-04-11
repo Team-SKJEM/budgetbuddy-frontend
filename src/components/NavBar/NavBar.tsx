@@ -1,20 +1,21 @@
 import React from "react";
-import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, IconButton, Image, Text } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
 import logo from "../../assets/images/budgetBuddyLogo.png";
+import { LuMenu } from "react-icons/lu";
+import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../Menu/Menu";
 
 export const Navbar: React.FC = () => {
+  const menuItems = [
+    { label: "Home", to: "/" },
+    { label: "About", to: "/about" },
+    { label: "Our Mission", to: "/mission" },
+    { label: "Sign In", to: "/signin" },
+  ];
+
   return (
-    <Box
-      w="100%"
-      p={{ base: 1.5, sm: 2, md: 4 }}
-      color="#F0F5FA"
-      position="fixed"
-      top="0"
-      bg="#F0F5FA"
-      zIndex="1"
-    >
+    <Box w="100%" p={4} position="fixed" top="0" zIndex="1">
       <Flex
         align="center"
         w="100%"
@@ -25,7 +26,7 @@ export const Navbar: React.FC = () => {
           <Image
             src={logo}
             alt="Logo"
-            maxHeight={{ base: "30px", sm: "40px", md: "55px", lg: "65px" }}
+            maxHeight={{ base: "55px", lg: "65px" }}
             objectFit="contain"
           />
         </RouterLink>
@@ -36,30 +37,17 @@ export const Navbar: React.FC = () => {
           justify="flex-end"
         >
           {/* Navigation Links */}
-          {[
-            { label: "Home", to: "/" },
-            { label: "About", to: "/about" },
-            { label: "Our Mission", to: "/mission" },
-            { label: "Sign In" },
-          ].map((item, i) => (
+          {menuItems.map((item, i) => (
             <ChakraLink
+              hideBelow="lg"
               asChild
               key={i}
+              colorPalette={"blue"}
               _focus={{ outline: "none" }} // Remove focus outline
               _active={{ outline: "none" }} // Remove active outline
             >
               <RouterLink to={item.to || "#"}>
-                <Text
-                  fontSize={{ base: "xs", sm: "sm", md: "md" }}
-                  position="relative"
-                  color="#89C3F3"
-                  _hover={{
-                    boxShadow: "inset 0 -2px 0 #87C2F3",
-                    transition: "box-shadow 0.2s ease-in-out",
-                  }}
-                >
-                  {item.label}
-                </Text>
+                <Text fontSize="md">{item.label}</Text>
               </RouterLink>
             </ChakraLink>
           ))}
@@ -67,27 +55,82 @@ export const Navbar: React.FC = () => {
           {/* Register Button */}
           <ChakraLink asChild>
             <Button
-              fontSize={{ base: "2xs", sm: "xs", md: "sm", lg: "md" }}
-              px={{ base: 2, sm: 3, md: 4, lg: 5 }}
-              py={{ base: 1, sm: 2, md: 2.5 }}
-              height="auto"
-              minW="auto"
+              hideBelow={"lg"}
+              fontSize={{ base: "sm", lg: "md" }}
+              size={{ base: "sm", sm: "md", lg: "lg" }}
               variant="solid"
-              bg="white"
-              color="#89C3F3"
+              rounded="md"
+              colorPalette={"blue"}
+              color={"white"}
               _hover={{
                 textDecoration: "none",
-                boxShadow: "0 0 10px rgba(135, 194, 243, 0.8)", // Light-up effect
                 transform: "scale(1.025)", // Slightly increase size for more emphasis
               }}
               _focus={{ boxShadow: "none", outline: "none" }}
               _active={{ boxShadow: "none" }}
             >
-              <RouterLink to="/register" style={{ color: "#89C3F3" }}>
-                Register
-              </RouterLink>
+              <RouterLink to="/register">Register</RouterLink>
             </Button>
           </ChakraLink>
+
+          {/* Dropdown Menu for Small/Medium Screens */}
+          <MenuRoot size={{ base: "md", md: "md" }}>
+            <MenuTrigger asChild>
+              <IconButton
+                display={{ base: "block", md: "block", lg: "none" }}
+                aria-label="Open Menu"
+                hideFrom="lg"
+                variant="outline"
+                size={{ base: "sm", sm: "md", lg: "lg" }}
+                color="rgb(37, 99, 235)"
+                justifyContent="center"
+                alignItems="center"
+                _icon={{ fontSize: "lg" }}
+              >
+                <Box display="flex" justifyContent="center" alignItems="center">
+                  <LuMenu size={"lg"} />
+                </Box>
+              </IconButton>
+            </MenuTrigger>
+            <MenuContent bgColor="white">
+              {menuItems.map((item, index) => {
+                return (
+                  <MenuItem
+                    key={index}
+                    value={item.label}
+                    fontSize={{ base: "md", md: "lg" }}
+                  >
+                    <ChakraLink
+                      asChild
+                      colorPalette={"cyan"}
+                      _focus={{ outline: "none" }} // Remove focus outline
+                      _active={{ outline: "none" }} // Remove active outline
+                    >
+                      <RouterLink to={item.to || "#"}>
+                        <Text position="relative">{item.label}</Text>
+                      </RouterLink>
+                    </ChakraLink>
+                  </MenuItem>
+                );
+              })}
+              <MenuItem
+                value={"Register"}
+                fontSize={{ base: "md", md: "lg" }}
+                hideFrom="lg"
+              >
+                <ChakraLink
+                  asChild
+                  colorPalette={"blue"}
+                  _focus={{ outline: "none" }} // Remove focus outline
+                  _active={{ outline: "none" }} // Remove active outline
+                >
+                  <RouterLink to={"/register"}>
+                    <Text position="relative">Register</Text>
+                  </RouterLink>
+                </ChakraLink>
+              </MenuItem>
+            </MenuContent>
+          </MenuRoot>
         </Flex>
       </Flex>
     </Box>
