@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Homepage from "./Homepage";
+import Homepage from "../Homepage";
 
 describe("tests for the homepage", () => {
   beforeAll(() => {
