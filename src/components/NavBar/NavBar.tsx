@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Button, Flex, Image } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
 import logo from "../../assets/images/budgetBuddyLogo.png";
@@ -8,83 +8,78 @@ export const Navbar: React.FC = () => {
   return (
     <Box
       w="100%"
-      p="4"
-      color="white"
+      p={{ base: 1.5, sm: 2, md: 4 }}
+      color="#F0F5FA"
       position="fixed"
       top="0"
-      bg="#89C3F3"
+      bg="#F0F5FA"
       zIndex="1"
-      borderBottom="2px solid white"
     >
-      <Flex align="center" w="100%" justifyContent="space-between">
+      <Flex
+        align="center"
+        w="100%"
+        justifyContent="space-between"
+        flexWrap="wrap"
+      >
         <RouterLink to="/">
           <Image
             src={logo}
             alt="Logo"
-            maxHeight="60px" // Adjust the maxHeight as needed
-            objectFit="contain" // Ensures the image scales without distortion
+            maxHeight={{ base: "30px", sm: "40px", md: "55px", lg: "65px" }}
+            objectFit="contain"
           />
         </RouterLink>
 
-        <Flex gap={4}>
-          <ChakraLink asChild>
-            <Button
-              variant="solid"
-              bg="white"
-              color="#89C3F3"
-              _hover={{ textDecoration: "none" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _active={{ boxShadow: "none" }}
+        <Flex
+          gap={{ base: 2, sm: 3, md: 5 }}
+          flexWrap="wrap"
+          justify="flex-end"
+        >
+          {/* Navigation Links */}
+          {[
+            { label: "Home", to: "/" },
+            { label: "About", to: "/about" },
+            { label: "Our Mission", to: "/mission" },
+            { label: "Sign In" },
+          ].map((item, i) => (
+            <ChakraLink
+              asChild
+              key={i}
+              _focus={{ outline: "none" }} // Remove focus outline
+              _active={{ outline: "none" }} // Remove active outline
             >
-              <RouterLink to="/" style={{ color: "#89C3F3" }}>
-                Home
+              <RouterLink to={item.to || "#"}>
+                <Text
+                  fontSize={{ base: "xs", sm: "sm", md: "md" }}
+                  position="relative"
+                  color="#89C3F3"
+                  _hover={{
+                    boxShadow: "inset 0 -2px 0 #87C2F3",
+                    transition: "box-shadow 0.2s ease-in-out",
+                  }}
+                >
+                  {item.label}
+                </Text>
               </RouterLink>
-            </Button>
-          </ChakraLink>
+            </ChakraLink>
+          ))}
+
+          {/* Register Button */}
           <ChakraLink asChild>
             <Button
+              fontSize={{ base: "2xs", sm: "xs", md: "sm", lg: "md" }}
+              px={{ base: 2, sm: 3, md: 4, lg: 5 }}
+              py={{ base: 1, sm: 2, md: 2.5 }}
+              height="auto"
+              minW="auto"
               variant="solid"
               bg="white"
               color="#89C3F3"
-              _hover={{ textDecoration: "none" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _active={{ boxShadow: "none" }}
-            >
-              <RouterLink to="/about" style={{ color: "#89C3F3" }}>
-                About
-              </RouterLink>
-            </Button>
-          </ChakraLink>
-          <ChakraLink asChild>
-            <Button
-              variant="solid"
-              bg="white"
-              color="#89C3F3"
-              _hover={{ textDecoration: "none" }}
-              _focus={{ boxShadow: "none", outline: "none" }}
-              _active={{ boxShadow: "none" }}
-            >
-              <RouterLink to="/mission" style={{ color: "#89C3F3" }}>
-                Our Mission
-              </RouterLink>
-            </Button>
-          </ChakraLink>
-          <Button
-            variant="solid"
-            bg="white"
-            color="#89C3F3"
-            _hover={{ textDecoration: "none" }}
-            _focus={{ boxShadow: "none", outline: "none" }}
-            _active={{ boxShadow: "none" }}
-          >
-            Sign In
-          </Button>
-          <ChakraLink asChild>
-            <Button
-              variant="solid"
-              bg="white"
-              color="#89C3F3"
-              _hover={{ textDecoration: "none" }}
+              _hover={{
+                textDecoration: "none",
+                boxShadow: "0 0 10px rgba(135, 194, 243, 0.8)", // Light-up effect
+                transform: "scale(1.025)", // Slightly increase size for more emphasis
+              }}
               _focus={{ boxShadow: "none", outline: "none" }}
               _active={{ boxShadow: "none" }}
             >
