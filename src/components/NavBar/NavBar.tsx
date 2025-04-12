@@ -42,7 +42,7 @@ export const Navbar: React.FC = () => {
               hideBelow="lg"
               asChild
               key={i}
-              colorPalette={"blue"}
+              colorPalette={"brand"}
               _focus={{ outline: "none" }} // Remove focus outline
               _active={{ outline: "none" }} // Remove active outline
             >
@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
               size={{ base: "sm", sm: "md", lg: "lg" }}
               variant="solid"
               rounded="md"
-              colorPalette={"blue"}
+              colorPalette={"brand"}
               color={"white"}
               _hover={{
                 textDecoration: "none",
@@ -82,27 +82,30 @@ export const Navbar: React.FC = () => {
                 hideFrom="lg"
                 variant="outline"
                 size={{ base: "sm", sm: "md", lg: "lg" }}
-                color="rgb(37, 99, 235)"
+                colorPalette={"brand"}
                 justifyContent="center"
                 alignItems="center"
                 _icon={{ fontSize: "lg" }}
+                _focus={{ boxShadow: "none", outline: "none" }}
+                _active={{ boxShadow: "none" }}
               >
                 <Box display="flex" justifyContent="center" alignItems="center">
                   <LuMenu size={"lg"} />
                 </Box>
               </IconButton>
             </MenuTrigger>
-            <MenuContent bgColor="white">
+            <MenuContent bgColor="white" p={5} hideFrom="lg">
               {menuItems.map((item, index) => {
                 return (
                   <MenuItem
                     key={index}
                     value={item.label}
                     fontSize={{ base: "md", md: "lg" }}
+                    padding={3}
                   >
                     <ChakraLink
                       asChild
-                      colorPalette={"cyan"}
+                      colorPalette={"brand"}
                       _focus={{ outline: "none" }} // Remove focus outline
                       _active={{ outline: "none" }} // Remove active outline
                     >
@@ -118,16 +121,24 @@ export const Navbar: React.FC = () => {
                 fontSize={{ base: "md", md: "lg" }}
                 hideFrom="lg"
               >
-                <ChakraLink
-                  asChild
-                  colorPalette={"blue"}
-                  _focus={{ outline: "none" }} // Remove focus outline
-                  _active={{ outline: "none" }} // Remove active outline
+                <Box
+                  padding={{ base: 2, md: 3 }}
+                  bg="brand.500"
+                  width="100%"
+                  borderRadius="lg"
+                  textAlign="center"
                 >
-                  <RouterLink to={"/register"}>
-                    <Text position="relative">Register</Text>
-                  </RouterLink>
-                </ChakraLink>
+                  <ChakraLink
+                    asChild
+                    color="white"
+                    _focus={{ outline: "none" }} // Remove focus outline
+                    _active={{ outline: "none" }} // Remove active outline
+                  >
+                    <RouterLink to={"/register"}>
+                      <Text position="relative">Register</Text>
+                    </RouterLink>
+                  </ChakraLink>
+                </Box>
               </MenuItem>
             </MenuContent>
           </MenuRoot>

@@ -2,10 +2,12 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
+import { system } from "./theme/theme";
+
 // Create config to force light mode
 const config = {
-  ...defaultSystem,
+  ...system,
   initialColorMode: "light",
   useSystemColorMode: false,
 };
