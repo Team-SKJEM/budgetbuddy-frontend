@@ -2,15 +2,12 @@
   "compilerOptions": {
     "target": "ES6",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
     "allowJs": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

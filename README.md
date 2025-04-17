@@ -13,8 +13,8 @@
 │   ├── components/          # Reusable UI components
 │   │   ├── Button/
 │   │   │   ├── Button.tsx
-│   │   │   ├── Button.module.css  # Component-specific styles
-│   │   │   ├── Button.test.tsx    # Unit test for Button
+│   │   │   ├── __tests__/
+│   │   │   │   ├── Button.test.tsx    # Unit test for Button
 │   │   │   └── index.ts           # Barrel export
 │   │   ├── Navbar/
 │   │   ├── Footer/
@@ -26,11 +26,12 @@
 │   │   ├── useAuth.test.ts  # Test for custom hook
 │   │   └── index.ts
 │   ├── pages/               # Page-level components
+│   │   ├── __tests__/
+│   │   │   ├── Home.test.tsx    # Test for a page
 │   │   ├── Home.tsx
 │   │   ├── About.tsx
 │   │   ├── Contact.tsx
 │   │   ├── Dashboard.tsx
-│   │   ├── Home.test.tsx    # Test for a page
 │   │   ├── index.ts
 │   │   └── NotFound.tsx
 │   ├── context/             # Context API providers
@@ -52,16 +53,13 @@
 │   │   ├── validateEmail.ts
 │   │   ├── index.ts
 │   │   └── utils.test.ts
-│   ├── __tests__/           # Integration & end-to-end tests
-│   │   ├── App.test.tsx
-│   │   ├── routes.test.tsx
+│   ├── tests/           # Integration & end-to-end tests
 │   │   ├── setupTests.ts     # Global test setup
 │   │   └── mocks/
 │   ├── App.tsx              # Main app entry point
 │   ├── main.tsx             # ReactDOM.render()
-│   ├── routes.tsx           # Centralized routing
 │   ├── index.css            # Global styles
-│   ├── vite.config.ts        # Vite config (if using Vite)
+│   ├── vite.config.ts        # Vite config
 │   ├── tsconfig.json         # TypeScript config
 │── package.json
 │── .eslintrc.js             # ESLint config
