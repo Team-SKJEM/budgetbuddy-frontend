@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import About from "../About";
+import content from "../../locale/en";
 
 describe("tests for the About Page", () => {
   beforeAll(() => {
@@ -7,6 +8,6 @@ describe("tests for the About Page", () => {
   });
 
   it("should render the correct content", () => {
-    expect(screen.getByText("About Page")).toBeInTheDocument();
+    expect(screen.getByText(content.about.title)).toBeInTheDocument();
   });
 });
