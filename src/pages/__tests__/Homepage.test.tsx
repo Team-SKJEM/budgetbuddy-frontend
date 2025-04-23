@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import Homepage from "./Homepage";
-import content from "../locale/en";
+import content from "../../locale/en";
+import Homepage from "../Homepage";
 
-describe("tests for the homepage", () => {
+describe("tests for the Home Page", () => {
   beforeAll(() => {
     render(<Homepage />);
   });
