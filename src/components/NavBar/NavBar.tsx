@@ -127,6 +127,30 @@ export const Navbar: React.FC = () => {
                   </MenuItem>
                 );
               })}
+              <MenuItem
+                value={"Register"}
+                fontSize={{ base: "md", md: "lg" }}
+                hideFrom="lg"
+              >
+                <Box
+                  padding={{ base: 2, md: 3 }}
+                  bg="brand.500"
+                  width="100%"
+                  borderRadius="lg"
+                  textAlign="center"
+                >
+                  <ChakraLink
+                    asChild
+                    color="white"
+                    _focus={{ outline: "none" }} // Remove focus outline
+                    _active={{ outline: "none" }} // Remove active outline
+                  >
+                    <RouterLink to={"/register"}>
+                      <Text position="relative">Register</Text>
+                    </RouterLink>
+                  </ChakraLink>
+                </Box>
+              </MenuItem>
             </MenuContent>
           </MenuRoot>
         </Flex>
