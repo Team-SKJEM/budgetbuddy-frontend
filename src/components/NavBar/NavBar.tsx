@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, Flex, IconButton, Image, Text } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
 import logo from "../../assets/images/budgetBuddyLogo.png";
 import { LuMenu } from "react-icons/lu";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../Menu/Menu";
+import { SignInCard } from "../SignInCard";
 
 export const Navbar: React.FC = () => {
+  const [isSignInOpen, setSignInOpen] = useState(false); // State to control the card visibility
+
   const menuItems = [
     { label: "Home", to: "/" },
     { label: "About", to: "/about" },
     { label: "Our Mission", to: "/mission" },
-    { label: "Sign In", to: "/signin" },
+    { label: "Sign In", to: "#" }, // No route here; will open SignInCard instead
   ];
 
   return (
@@ -46,7 +49,10 @@ export const Navbar: React.FC = () => {
               _focus={{ outline: "none" }} // Remove focus outline
               _active={{ outline: "none" }} // Remove active outline
             >
-              <RouterLink to={item.to || "#"}>
+              <RouterLink
+                to={item.to || "#"}
+                onClick={() => item.label === "Sign In" && setSignInOpen(true)} // Open SignInCard when clicked
+              >
                 <Text fontSize="md">{item.label}</Text>
               </RouterLink>
             </ChakraLink>
@@ -109,41 +115,25 @@ export const Navbar: React.FC = () => {
                       _focus={{ outline: "none" }} // Remove focus outline
                       _active={{ outline: "none" }} // Remove active outline
                     >
-                      <RouterLink to={item.to || "#"}>
+                      <RouterLink
+                        to={item.to || "#"}
+                        onClick={() =>
+                          item.label === "Sign In" && setSignInOpen(true)
+                        } // Open SignInCard when clicked
+                      >
                         <Text position="relative">{item.label}</Text>
                       </RouterLink>
                     </ChakraLink>
                   </MenuItem>
                 );
               })}
-              <MenuItem
-                value={"Register"}
-                fontSize={{ base: "md", md: "lg" }}
-                hideFrom="lg"
-              >
-                <Box
-                  padding={{ base: 2, md: 3 }}
-                  bg="brand.500"
-                  width="100%"
-                  borderRadius="lg"
-                  textAlign="center"
-                >
-                  <ChakraLink
-                    asChild
-                    color="white"
-                    _focus={{ outline: "none" }} // Remove focus outline
-                    _active={{ outline: "none" }} // Remove active outline
-                  >
-                    <RouterLink to={"/register"}>
-                      <Text position="relative">Register</Text>
-                    </RouterLink>
-                  </ChakraLink>
-                </Box>
-              </MenuItem>
             </MenuContent>
           </MenuRoot>
         </Flex>
       </Flex>
+
+      {/* Sign In Card (overlay) */}
+      <SignInCard isOpen={isSignInOpen} onClose={() => setSignInOpen(false)} />
     </Box>
   );
 };
