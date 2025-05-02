@@ -10,7 +10,13 @@ const content = {
     title: "Mission Page",
   },
   register: {
-    title: "Register Page",
+    title: "Register",
+    subtitle: "Create an account to get started",
+    email: "Email",
+    username: "Username",
+    password: "Password",
+    confirmPassword: "Confirm Password",
+    cta: "Create Account",
   },
 };
 
