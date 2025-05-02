@@ -92,7 +92,10 @@ export const SignInCard = ({
             size={{ base: "sm", md: "md", lg: "lg" }}
             color="white"
             bg="brand.500"
-            _hover={{ bg: "brand.600" }}
+            _hover={{
+              textDecoration: "none",
+              transform: "scale(1.025)", // Slightly increase size for more emphasis
+            }}
             borderRadius="lg"
             onClick={() => {
               // Handle sign-in logic here

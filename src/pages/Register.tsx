@@ -102,7 +102,10 @@ const Register: React.FC = () => {
           fontSize={{ base: "sm", lg: "md" }}
           bg="brand.500"
           color="white"
-          _hover={{ bg: "brand.600" }}
+          _hover={{
+            textDecoration: "none",
+            transform: "scale(1.025)", // Slightly increase size for more emphasis
+          }}
           onClick={() => {
             // Handle registration logic here
           }}
