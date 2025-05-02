@@ -34,6 +34,13 @@ const Register: React.FC = () => {
               bg={Colors.light.inputBg}
               borderRadius="md"
               color={Colors.light.text}
+              border="1px solid transparent"
+              outline="none" // removes browser focus ring
+              _focus={{
+                outline: "none",
+                boxShadow: "none",
+                borderColor: "transparent",
+              }}
             />
           </Field.Root>
 
@@ -43,6 +50,13 @@ const Register: React.FC = () => {
               bg={Colors.light.inputBg}
               borderRadius="md"
               color={Colors.light.text}
+              border="1px solid transparent"
+              outline="none" // removes browser focus ring
+              _focus={{
+                outline: "none",
+                boxShadow: "none",
+                borderColor: "transparent",
+              }}
             />
           </Field.Root>
 
@@ -53,6 +67,13 @@ const Register: React.FC = () => {
               bg={Colors.light.inputBg}
               borderRadius="md"
               color={Colors.light.text}
+              border="1px solid transparent"
+              outline="none" // removes browser focus ring
+              _focus={{
+                outline: "none",
+                boxShadow: "none",
+                borderColor: "transparent",
+              }}
             />
           </Field.Root>
 
@@ -63,6 +84,13 @@ const Register: React.FC = () => {
               bg={Colors.light.inputBg}
               borderRadius="md"
               color={Colors.light.text}
+              border="1px solid transparent"
+              outline="none" // removes browser focus ring
+              _focus={{
+                outline: "none",
+                boxShadow: "none",
+                borderColor: "transparent",
+              }}
             />
           </Field.Root>
         </Stack>

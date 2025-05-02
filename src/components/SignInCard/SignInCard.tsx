@@ -1,4 +1,5 @@
 import { Box, Button, Card, Field, Input, Stack } from "@chakra-ui/react";
+import { Colors } from "../../constants/Colors"; // your custom color definitions
 
 export const SignInCard = ({
   isOpen,
@@ -40,11 +41,36 @@ export const SignInCard = ({
             {" "}
             <Field.Root>
               <Field.Label>Email</Field.Label>
-              <Input placeholder="you@example.com" />
+              <Input
+                placeholder="you@example.com"
+                bg={Colors.light.inputBg}
+                borderRadius="md"
+                color={Colors.light.text}
+                border="1px solid transparent"
+                outline="none" // removes browser focus ring
+                _focus={{
+                  outline: "none",
+                  boxShadow: "none",
+                  borderColor: "transparent",
+                }}
+              />
             </Field.Root>
             <Field.Root>
               <Field.Label>Password</Field.Label>
-              <Input type="password" placeholder="••••••••" />
+              <Input
+                type="password"
+                placeholder="••••••••"
+                bg={Colors.light.inputBg}
+                borderRadius="md"
+                color={Colors.light.text}
+                border="1px solid transparent"
+                outline="none" // removes browser focus ring
+                _focus={{
+                  outline: "none",
+                  boxShadow: "none",
+                  borderColor: "transparent",
+                }}
+              />
             </Field.Root>
           </Stack>
         </Card.Body>
@@ -56,6 +82,7 @@ export const SignInCard = ({
             fontSize={{ base: "sm", lg: "md" }}
             size={{ base: "sm", md: "md", lg: "lg" }}
             colorPalette="brand"
+            borderRadius="lg"
           >
             Cancel
           </Button>
@@ -66,6 +93,7 @@ export const SignInCard = ({
             color="white"
             bg="brand.500"
             _hover={{ bg: "brand.600" }}
+            borderRadius="lg"
             onClick={() => {
               // Handle sign-in logic here
             }}
