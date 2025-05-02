@@ -13,15 +13,15 @@ import content from "../locale/en";
 const Register: React.FC = () => {
   return (
     <Box
-      minH="100vh"
-      bg="gray.50"
+      w="100vw"
+      h="100vh"
       display="flex"
-      flexDirection="column"
       alignItems="center"
       justifyContent="center"
-      px={4}
+      bg="gray.50"
+      p={4}
     >
-      <Box maxW="md" w="full">
+      <Box maxW="md" w="full" bg="white" p={6} borderRadius="lg" boxShadow="lg">
         <Stack gap="2" mb="6" textAlign="center">
           <Heading size="lg">{content.register.title}</Heading>
           <Text color="gray.600">{content.register.subtitle}</Text>
@@ -29,23 +29,19 @@ const Register: React.FC = () => {
 
         <Stack gap="4">
           <Field.Root>
-            <Field.Label>{content.register.email}</Field.Label>
-            <Input placeholder="you@example.com" />
+            <Input placeholder="Enter your email" />
           </Field.Root>
 
           <Field.Root>
-            <Field.Label>{content.register.username}</Field.Label>
-            <Input placeholder="your username" />
+            <Input placeholder="Enter a username" />
           </Field.Root>
 
           <Field.Root>
-            <Field.Label>{content.register.password}</Field.Label>
-            <Input type="password" placeholder="••••••••" />
+            <Input type="password" placeholder="Create a password" />
           </Field.Root>
 
           <Field.Root>
-            <Field.Label>{content.register.confirmPassword}</Field.Label>
-            <Input type="password" placeholder="••••••••" />
+            <Input type="password" placeholder="Re-enter your password" />
           </Field.Root>
         </Stack>
 

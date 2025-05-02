@@ -20,6 +20,6 @@ describe("tests for the Register Page", () => {
   });
 
   it("should render the correct content", () => {
-    expect(screen.getByText(content.register.email)).toBeInTheDocument();
+    expect(screen.getByText(content.register.title)).toBeInTheDocument();
   });
 });
