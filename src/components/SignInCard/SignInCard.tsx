@@ -38,7 +38,6 @@ export const SignInCard = ({
         <Card.Body>
           <Stack gap="4" w="full">
             {" "}
-            {/* Using 'gap' instead of 'spacing' */}
             <Field.Root>
               <Field.Label>Email</Field.Label>
               <Input placeholder="you@example.com" />
