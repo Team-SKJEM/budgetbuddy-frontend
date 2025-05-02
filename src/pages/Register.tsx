@@ -9,6 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import content from "../locale/en";
+import { Colors } from "../constants/Colors"; // your custom color definitions
 
 const Register: React.FC = () => {
   return (
@@ -18,7 +19,6 @@ const Register: React.FC = () => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      bg="gray.50"
       p={4}
     >
       <Box maxW="md" w="full" bg="white" p={6} borderRadius="lg" boxShadow="lg">
@@ -29,19 +29,41 @@ const Register: React.FC = () => {
 
         <Stack gap="4">
           <Field.Root>
-            <Input placeholder="Enter your email" />
+            <Input
+              placeholder="Enter your email"
+              bg={Colors.light.inputBg}
+              borderRadius="md"
+              color={Colors.light.text}
+            />
           </Field.Root>
 
           <Field.Root>
-            <Input placeholder="Enter a username" />
+            <Input
+              placeholder="Enter a username"
+              bg={Colors.light.inputBg}
+              borderRadius="md"
+              color={Colors.light.text}
+            />
           </Field.Root>
 
           <Field.Root>
-            <Input type="password" placeholder="Create a password" />
+            <Input
+              type="password"
+              placeholder="Create a password"
+              bg={Colors.light.inputBg}
+              borderRadius="md"
+              color={Colors.light.text}
+            />
           </Field.Root>
 
           <Field.Root>
-            <Input type="password" placeholder="Re-enter your password" />
+            <Input
+              type="password"
+              placeholder="Re-enter your password"
+              bg={Colors.light.inputBg}
+              borderRadius="md"
+              color={Colors.light.text}
+            />
           </Field.Root>
         </Stack>
 
