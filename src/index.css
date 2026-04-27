@@ -4,10 +4,10 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  background: #f8fafc;
   min-width: 320px;
   min-height: 100vh;
+  color: #0f172a;
 }
 
 h1 {
@@ -20,4 +20,8 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+#root {
+  min-height: 100%;
 }

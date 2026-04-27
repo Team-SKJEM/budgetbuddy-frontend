@@ -1,24 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Button, Flex, IconButton, Image, Text } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
 import logo from "../../assets/images/budgetBuddyLogo.png";
 import { LuMenu } from "react-icons/lu";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../Menu/Menu";
-import { SignInCard } from "../SignInCard";
+import { Colors } from "../../constants/Colors";
 
 export const Navbar: React.FC = () => {
-  const [isSignInOpen, setSignInOpen] = useState(false); // State to control the card visibility
-
   const menuItems = [
     { label: "Home", to: "/" },
     { label: "About", to: "/about" },
-    { label: "Our Mission", to: "/mission" },
-    { label: "Sign In", to: "#" }, // No route here; will open SignInCard instead
   ];
 
   return (
-    <Box w="100%" p={4} position="fixed" top="0" zIndex="1">
+    <Box
+      w="100%"
+      p={4}
+      position="fixed"
+      top="0"
+      zIndex="1"
+      bg="rgba(248, 250, 252, 0.92)"
+      backdropFilter="blur(8px)"
+      boxShadow="0 2px 20px rgba(15, 23, 42, 0.08)"
+    >
       <Flex
         align="center"
         w="100%"
@@ -45,14 +50,12 @@ export const Navbar: React.FC = () => {
               hideBelow="lg"
               asChild
               key={i}
-              colorPalette={"brand"}
+              color={Colors.light.text}
               _focus={{ outline: "none" }} // Remove focus outline
               _active={{ outline: "none" }} // Remove active outline
+              _hover={{ color: Colors.brand.primary }}
             >
-              <RouterLink
-                to={item.to || "#"}
-                onClick={() => item.label === "Sign In" && setSignInOpen(true)} // Open SignInCard when clicked
-              >
+              <RouterLink to={item.to || "#"}>
                 <Text fontSize="md">{item.label}</Text>
               </RouterLink>
             </ChakraLink>
@@ -66,11 +69,10 @@ export const Navbar: React.FC = () => {
               size={{ base: "sm", sm: "md", lg: "lg" }}
               variant="solid"
               rounded="md"
-              colorPalette={"brand"}
+              bg={Colors.brand.primary}
               color={"white"}
               _hover={{
-                textDecoration: "none",
-                transform: "scale(1.025)", // Slightly increase size for more emphasis
+                bg: Colors.brand[600],
               }}
               _focus={{ boxShadow: "none", outline: "none" }}
               _active={{ boxShadow: "none" }}
@@ -88,7 +90,7 @@ export const Navbar: React.FC = () => {
                 hideFrom="lg"
                 variant="outline"
                 size={{ base: "sm", sm: "md", lg: "lg" }}
-                colorPalette={"brand"}
+                colorPalette={"blue"}
                 justifyContent="center"
                 alignItems="center"
                 _icon={{ fontSize: "lg" }}
@@ -111,16 +113,12 @@ export const Navbar: React.FC = () => {
                   >
                     <ChakraLink
                       asChild
-                      colorPalette={"brand"}
+                      color={Colors.light.text}
                       _focus={{ outline: "none" }} // Remove focus outline
                       _active={{ outline: "none" }} // Remove active outline
+                      _hover={{ color: Colors.brand.primary }}
                     >
-                      <RouterLink
-                        to={item.to || "#"}
-                        onClick={() =>
-                          item.label === "Sign In" && setSignInOpen(true)
-                        } // Open SignInCard when clicked
-                      >
+                      <RouterLink to={item.to || "#"}>
                         <Text position="relative">{item.label}</Text>
                       </RouterLink>
                     </ChakraLink>
@@ -134,7 +132,7 @@ export const Navbar: React.FC = () => {
               >
                 <Box
                   padding={{ base: 2, md: 3 }}
-                  bg="brand.500"
+                  bg={Colors.brand.primary}
                   width="100%"
                   borderRadius="lg"
                   textAlign="center"
@@ -155,9 +153,6 @@ export const Navbar: React.FC = () => {
           </MenuRoot>
         </Flex>
       </Flex>
-
-      {/* Sign In Card (overlay) */}
-      <SignInCard isOpen={isSignInOpen} onClose={() => setSignInOpen(false)} />
     </Box>
   );
 };
