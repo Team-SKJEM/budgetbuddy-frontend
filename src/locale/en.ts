@@ -79,6 +79,9 @@ const content = {
     cta: "Create Account",
     appSignInNote:
       "After creating your account, please sign in from the BudgetBuddy mobile app.",
+    error: {
+      backendDown: "Registration failed. The backend is not up at the moment.",
+    },
   },
   login: {
     title: "Login",

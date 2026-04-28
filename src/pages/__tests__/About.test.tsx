@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from "../../tests/utils";
 import About from "../About";
 import content from "../../locale/en";
 

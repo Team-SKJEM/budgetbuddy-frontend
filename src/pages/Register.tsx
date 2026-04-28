@@ -8,10 +8,33 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import content from "../locale/en";
 import { Colors } from "../constants/Colors"; // your custom color definitions
 
 const Register: React.FC = () => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleRegister = async () => {
+    setErrorMessage("");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/user/register", {
+        method: "POST",
+      });
+
+      if (!response.ok) {
+        setErrorMessage(content.register.error.backendDown);
+      }
+    } catch {
+      setErrorMessage(content.register.error.backendDown);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <Box
       w="100vw"
@@ -124,12 +147,16 @@ const Register: React.FC = () => {
           _hover={{
             bg: Colors.brand[600],
           }}
-          onClick={() => {
-            // Handle registration logic here
-          }}
+          onClick={handleRegister}
+          disabled={isLoading}
         >
-          {content.register.cta}
+          {isLoading ? "Loading..." : content.register.cta}
         </Button>
+        {errorMessage ? (
+          <Text mt={4} color="red.500" fontSize="sm">
+            {errorMessage}
+          </Text>
+        ) : null}
         <Text mt={4} fontSize="sm" color={Colors.brand.descriptionText}>
           {content.register.appSignInNote}
         </Text>

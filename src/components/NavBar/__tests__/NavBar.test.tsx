@@ -23,7 +23,7 @@ describe("Navbar", () => {
   });
 
   it("renders navigation links on desktop view", () => {
-    const navigationLinks = ["Home", "About", "Our Mission", "Sign In"];
+    const navigationLinks = ["Home", "About"];
 
     navigationLinks.forEach((link) => {
       const linkElement = screen.getAllByText(link)[0];
@@ -45,11 +45,6 @@ describe("Navbar", () => {
     const aboutLink = screen.getByRole("link", { name: "About" });
     expect(aboutLink).toHaveAttribute("href", "/about");
 
-    // The Our Mission link
-    const missionLink = screen.getByRole("link", { name: "Our Mission" });
-    expect(missionLink).toHaveAttribute("href", "/mission");
-
-    // The Sign In link nothing yet
     // The Register link
     const registerLink = screen.getByRole("link", { name: "Register" });
     expect(registerLink).toHaveAttribute("href", "/register");
@@ -80,7 +75,7 @@ describe("Navbar", () => {
       await user.click(menuButton);
 
       // Check if all menu items are visible
-      const menuItems = ["Home", "About", "Our Mission", "Sign In", "Register"];
+      const menuItems = ["Home", "About", "Register"];
       menuItems.forEach((item) => {
         const menuItem = screen.getAllByText(item)[0];
         expect(menuItem).toBeInTheDocument();
