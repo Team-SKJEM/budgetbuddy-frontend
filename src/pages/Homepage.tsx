@@ -72,9 +72,13 @@ const HomePage: React.FC = () => {
                 px={6}
                 _hover={{ bg: Colors.brand[600] }}
               >
-                <RouterLink to="/register">
+                <a
+                  href={content.home.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {content.home.primaryCta}
-                </RouterLink>
+                </a>
               </Button>
               <Button
                 asChild
@@ -89,25 +93,22 @@ const HomePage: React.FC = () => {
           <Box display="flex" justifyContent="center">
             <Box
               w="100%"
-              maxW={{ base: "260px", md: "320px" }}
+              maxW={{ base: "360px", md: "560px" }}
               borderRadius="2xl"
               p={3}
               bg="white"
               border="1px solid"
               borderColor={Colors.light.border}
             >
-              <Box
-                borderRadius="xl"
-                overflow="hidden"
-                aspectRatio={iphoneScreenshotAspectRatio}
-              >
-                <Image
-                  src={heroDash}
-                  alt="BudgetBuddy app dashboard"
-                  w="100%"
-                  h="100%"
-                  objectFit="contain"
-                  display="block"
+              <Box borderRadius="xl" overflow="hidden" aspectRatio={16 / 9}>
+                <iframe
+                  src="https://www.youtube.com/embed/--4v7Ppnx7E"
+                  title="BudgetBuddy demo video"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, display: "block" }}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
                 />
               </Box>
             </Box>

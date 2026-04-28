@@ -6,6 +6,7 @@ import logo from "../../assets/images/budgetBuddyLogo.png";
 import { LuMenu } from "react-icons/lu";
 import { MenuContent, MenuItem, MenuRoot, MenuTrigger } from "../Menu/Menu";
 import { Colors } from "../../constants/Colors";
+import content from "../../locale/en";
 
 export const Navbar: React.FC = () => {
   const menuItems = [
@@ -43,6 +44,7 @@ export const Navbar: React.FC = () => {
           gap={{ base: 2, sm: 3, md: 5 }}
           flexWrap="wrap"
           justify="flex-end"
+          pr={{ base: 2, md: 4, lg: 8 }}
         >
           {/* Navigation Links */}
           {menuItems.map((item, i) => (
@@ -61,23 +63,24 @@ export const Navbar: React.FC = () => {
             </ChakraLink>
           ))}
 
-          {/* Register Button */}
-          <ChakraLink asChild>
+          <ChakraLink asChild hideBelow="lg">
             <Button
-              hideBelow={"lg"}
+              asChild
               fontSize={{ base: "sm", lg: "md" }}
               size={{ base: "sm", sm: "md", lg: "lg" }}
               variant="solid"
               rounded="md"
               bg={Colors.brand.primary}
-              color={"white"}
+              color="white"
               _hover={{
                 bg: Colors.brand[600],
               }}
               _focus={{ boxShadow: "none", outline: "none" }}
               _active={{ boxShadow: "none" }}
             >
-              <RouterLink to="/register">Register</RouterLink>
+              <a href={content.home.githubUrl} target="_blank" rel="noreferrer">
+                GitHub
+              </a>
             </Button>
           </ChakraLink>
 
@@ -125,29 +128,22 @@ export const Navbar: React.FC = () => {
                   </MenuItem>
                 );
               })}
-              <MenuItem
-                value={"Register"}
-                fontSize={{ base: "md", md: "lg" }}
-                hideFrom="lg"
-              >
-                <Box
-                  padding={{ base: 2, md: 3 }}
-                  bg={Colors.brand.primary}
-                  width="100%"
-                  borderRadius="lg"
-                  textAlign="center"
+              <MenuItem value="GitHub" fontSize={{ base: "md", md: "lg" }}>
+                <ChakraLink
+                  asChild
+                  color={Colors.light.text}
+                  _focus={{ outline: "none" }}
+                  _active={{ outline: "none" }}
+                  _hover={{ color: Colors.brand.primary }}
                 >
-                  <ChakraLink
-                    asChild
-                    color="white"
-                    _focus={{ outline: "none" }} // Remove focus outline
-                    _active={{ outline: "none" }} // Remove active outline
+                  <a
+                    href={content.home.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
                   >
-                    <RouterLink to={"/register"}>
-                      <Text position="relative">Register</Text>
-                    </RouterLink>
-                  </ChakraLink>
-                </Box>
+                    <Text position="relative">GitHub</Text>
+                  </a>
+                </ChakraLink>
               </MenuItem>
             </MenuContent>
           </MenuRoot>

@@ -2,6 +2,7 @@ import { cleanup, screen } from "@testing-library/react";
 import Navbar from "../NavBar";
 import userEvent from "@testing-library/user-event";
 import { render } from "../../../tests/utils";
+import content from "../../../locale/en";
 
 // Mock the logo import
 jest.mock(
@@ -23,17 +24,12 @@ describe("Navbar", () => {
   });
 
   it("renders navigation links on desktop view", () => {
-    const navigationLinks = ["Home", "About"];
+    const navigationLinks = ["Home", "About", "GitHub"];
 
     navigationLinks.forEach((link) => {
       const linkElement = screen.getAllByText(link)[0];
       expect(linkElement).toBeInTheDocument();
     });
-  });
-
-  it("renders a register button", () => {
-    const registerButton = screen.getAllByText(/Register/i)[0];
-    expect(registerButton).toBeInTheDocument();
   });
 
   it("should have the correct link attributes", async () => {
@@ -45,9 +41,8 @@ describe("Navbar", () => {
     const aboutLink = screen.getByRole("link", { name: "About" });
     expect(aboutLink).toHaveAttribute("href", "/about");
 
-    // The Register link
-    const registerLink = screen.getByRole("link", { name: "Register" });
-    expect(registerLink).toHaveAttribute("href", "/register");
+    const githubLink = screen.getByRole("link", { name: "GitHub" });
+    expect(githubLink).toHaveAttribute("href", content.home.githubUrl);
   });
 
   describe("Mobile view", () => {
@@ -75,7 +70,7 @@ describe("Navbar", () => {
       await user.click(menuButton);
 
       // Check if all menu items are visible
-      const menuItems = ["Home", "About", "Register"];
+      const menuItems = ["Home", "About", "GitHub"];
       menuItems.forEach((item) => {
         const menuItem = screen.getAllByText(item)[0];
         expect(menuItem).toBeInTheDocument();

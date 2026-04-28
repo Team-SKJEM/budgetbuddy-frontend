@@ -4,7 +4,8 @@ const content = {
     title: "Build better money habits with BudgetBuddy",
     subtitle:
       "Track spending, set practical goals, and stay confident with your budget every month.",
-    primaryCta: "Get Started",
+    primaryCta: "View on GitHub",
+    githubUrl: "https://github.com/Team-SKJEM",
     secondaryCta: "Learn More",
     heroImagePlaceholder:
       "Placeholder: Home hero image (app screenshot or lifestyle)",
@@ -69,28 +70,12 @@ const content = {
       "Formed in Computer Engineering at University of Waterloo, our team values hard work, ownership, and consistency. We move fast, give direct feedback, and focus on building and shipping without ego. High standards, mutual respect, and trust drive everything we do.",
     teamImagePlaceholder: "Placeholder: Team photo or workspace image",
   },
-  register: {
-    title: "Register",
-    subtitle: "Create an account to get started",
-    email: "Email",
-    username: "Username",
-    password: "Password",
-    confirmPassword: "Confirm Password",
-    cta: "Create Account",
-    appSignInNote:
-      "After creating your account, please sign in from the BudgetBuddy mobile app.",
-    error: {
-      backendDown: "Registration failed. The backend is not up at the moment.",
-    },
-  },
   login: {
     title: "Login",
     emailPlaceholder: "Email",
     passwordPlaceholder: "Password",
     forgotPassword: "Forgot Password?",
     cta: "Login",
-    noAccount: "No account?",
-    register: "Register",
     error: {
       invalidEmail: "Invalid email format.",
       emptyPassword: "Password is required.",
